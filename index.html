@@ -11,41 +11,31 @@
     <h1>Jogo de Xadrez</h1>
   </header>
 
-  <main class="jogo">
-    <section class="area-tabuleiro" aria-label="Tabuleiro de xadrez">
+  <main>
+    <section>
       <div id="tabuleiro"></div>
     </section>
 
-    <aside class="painel" aria-label="Painel da partida">
-      <p id="vez" class="vez"></p>
+    <aside>
+      <p id="status"></p>
+      <p id="aviso"></p>
 
-      <div id="situacao" class="situacao oculto" role="status" aria-live="polite">
-        <strong id="situacaoTitulo"></strong>
-        <span id="situacaoDetalhe"></span>
+      <div id="promocao" hidden>
+        <p>Escolha a peça da promoção:</p>
+        <button type="button" data-tipo="Q">Dama</button>
+        <button type="button" data-tipo="R">Torre</button>
+        <button type="button" data-tipo="B">Bispo</button>
+        <button type="button" data-tipo="N">Cavalo</button>
       </div>
 
-      <p id="aviso" class="aviso oculto" role="alert"></p>
-
       <button id="btnNovaPartida" type="button">Nova partida</button>
-
-      <h2>Histórico</h2>
-      <ol id="historico"></ol>
     </aside>
   </main>
 
-  <!-- Menu de promoção: fica escondido até um peão chegar à última fileira -->
-  <div id="promocao" class="promocao" hidden>
-    <div class="promocao-caixa">
-      <p>Escolha a promoção:</p>
-      <div id="opcoesPromocao" class="opcoes-promocao"></div>
-    </div>
-  </div>
-
   <!-- A ordem importa: cada arquivo usa funções dos anteriores -->
-  <script src="js/pieces.js"></script>
-  <script src="js/rules.js"></script>
-  <script src="js/board.js"></script>
-  <script src="js/game.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/pecas.js"></script>
+  <script src="js/regras.js"></script>
+  <script src="js/tela.js"></script>
+  <script src="js/jogo.js"></script>
 </body>
 </html>
