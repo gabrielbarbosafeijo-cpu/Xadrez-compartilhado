@@ -15,6 +15,9 @@ const NOMES_DOS_TIPOS = {
   P: "Peão"
 };
 
+// Peças que o peão pode virar na promoção, na ordem em que aparecem no menu
+const TIPOS_DE_PROMOCAO = ["Q", "R", "B", "N"];
+
 // Cria o tabuleiro na posição inicial oficial.
 // Linha 0 = fileira 8 (pretas) e linha 7 = fileira 1 (brancas).
 function criarTabuleiroInicial() {

@@ -20,6 +20,11 @@ h1 {
   font-size: 1.8rem;
 }
 
+h2 {
+  margin: 20px 0 8px;
+  font-size: 1.1rem;
+}
+
 /* ---------- Layout: tabuleiro + painel lado a lado, empilhados no celular ---------- */
 .jogo {
   display: flex;
@@ -98,9 +103,39 @@ h1 {
   color: #f0d9b5;
 }
 
-/* Destaque da peça que está sendo arrastada */
+/* ---------- Destaques ---------- */
+.casa.ultima-jogada {
+  box-shadow: inset 0 0 0 1000px rgba(255, 235, 59, 0.35);
+}
+
 .casa.origem-selecionada {
   box-shadow: inset 0 0 0 1000px rgba(20, 130, 40, 0.5);
+}
+
+.casa.em-xeque {
+  background-image: radial-gradient(circle, rgba(255, 0, 0, 0.9) 0%, rgba(200, 0, 0, 0.6) 35%, rgba(150, 0, 0, 0) 80%);
+}
+
+/* Bolinha nas casas livres para onde a peça pode ir */
+.casa.destino-possivel::after {
+  content: "";
+  position: absolute;
+  width: 28%;
+  height: 28%;
+  border-radius: 50%;
+  background-color: rgba(20, 85, 30, 0.45);
+  pointer-events: none;
+}
+
+/* Anel nas casas onde há captura */
+.casa.destino-captura::after {
+  content: "";
+  position: absolute;
+  width: 96%;
+  height: 96%;
+  border-radius: 50%;
+  border: 5px solid rgba(20, 85, 30, 0.55);
+  pointer-events: none;
 }
 
 /* ---------- Painel ---------- */
@@ -108,6 +143,31 @@ h1 {
   margin: 0 0 12px;
   font-size: 1.4rem;
   font-weight: bold;
+}
+
+.situacao {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  border-radius: 4px;
+}
+
+.situacao.xeque {
+  background-color: #fff3cd;
+  color: #664d03;
+  border-left: 4px solid #ffc107;
+}
+
+.situacao.fim {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border-left: 4px solid #198754;
+}
+
+.situacao strong {
+  font-size: 1.2rem;
 }
 
 .aviso {
@@ -135,6 +195,77 @@ button {
 
 button:hover {
   background-color: #1d4ed8;
+}
+
+#historico {
+  max-height: 260px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 8px 8px 8px 40px;
+  border-radius: 4px;
+  background-color: #262421;
+  font-family: "Courier New", monospace;
+  line-height: 1.7;
+}
+
+#historico:empty::before {
+  content: "Nenhuma jogada ainda.";
+  margin-left: -32px;
+  color: #a09e99;
+}
+
+/* ---------- Menu de promoção ---------- */
+.promocao {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 10;
+}
+
+.promocao[hidden] {
+  display: none;
+}
+
+.promocao-caixa {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #2c2c2a;
+  text-align: center;
+}
+
+.promocao-caixa p {
+  margin: 0 0 12px;
+  font-weight: bold;
+}
+
+.opcoes-promocao {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.opcao-promocao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  background-color: #ededeb;
+  color: #2c2c2a;
+}
+
+.opcao-promocao:hover {
+  background-color: #c9c8c2;
+}
+
+.opcao-promocao img {
+  width: 64px;
+  height: 64px;
 }
 
 /* ---------- Telas menores ---------- */
