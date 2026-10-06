@@ -1,0 +1,150 @@
+/* ---------- Base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #312e2b;
+  color: #ededeb;
+}
+
+header {
+  text-align: center;
+  padding: 16px 12px 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+/* ---------- Layout: tabuleiro + painel lado a lado, empilhados no celular ---------- */
+.jogo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 16px;
+}
+
+.painel {
+  flex: 1 1 260px;
+  max-width: 360px;
+}
+
+/* ---------- Tabuleiro ---------- */
+#tabuleiro {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  width: min(92vw, 78vh, 640px);
+  aspect-ratio: 1 / 1;
+  border: 4px solid #1e1c1a;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.casa {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.casa.clara {
+  background-color: #f0d9b5;
+}
+
+.casa.escura {
+  background-color: #b58863;
+}
+
+.casa img {
+  width: 90%;
+  height: 90%;
+  cursor: grab;
+}
+
+.casa img:active {
+  cursor: grabbing;
+}
+
+/* Coordenadas dentro das casas (números à esquerda, letras embaixo) */
+.coordenada {
+  position: absolute;
+  font-size: clamp(9px, 1.7vw, 14px);
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.coordenada-linha {
+  top: 2px;
+  left: 3px;
+}
+
+.coordenada-coluna {
+  bottom: 1px;
+  right: 3px;
+}
+
+.clara .coordenada {
+  color: #b58863;
+}
+
+.escura .coordenada {
+  color: #f0d9b5;
+}
+
+/* Destaque da peça que está sendo arrastada */
+.casa.origem-selecionada {
+  box-shadow: inset 0 0 0 1000px rgba(20, 130, 40, 0.5);
+}
+
+/* ---------- Painel ---------- */
+.vez {
+  margin: 0 0 12px;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.aviso {
+  margin: 0 0 12px;
+  padding: 12px 16px;
+  border-radius: 4px;
+  background-color: #f8d7da;
+  color: #842029;
+  border-left: 4px solid #dc3545;
+}
+
+.oculto {
+  display: none;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+/* ---------- Telas menores ---------- */
+@media (max-width: 800px) {
+  .painel {
+    flex-basis: 100%;
+    max-width: 640px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+}

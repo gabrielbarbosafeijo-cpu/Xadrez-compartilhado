@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Xadrez</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Jogo de Xadrez</h1>
+  </header>
+
+  <main class="jogo">
+    <section class="area-tabuleiro" aria-label="Tabuleiro de xadrez">
+      <div id="tabuleiro"></div>
+    </section>
+
+    <aside class="painel" aria-label="Painel da partida">
+      <p id="vez" class="vez"></p>
+      <p id="aviso" class="aviso oculto" role="alert"></p>
+      <button id="btnNovaPartida" type="button">Nova partida</button>
+    </aside>
+  </main>
+
+  <!-- A ordem importa: cada arquivo usa funções dos anteriores -->
+  <script src="js/pieces.js"></script>
+  <script src="js/board.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
