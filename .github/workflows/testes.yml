@@ -1,0 +1,20 @@
+name: Testes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - name: Regras do xadrez (perft)
+        run: npm run test:regras
+      - name: Interface (arrastar e soltar)
+        run: npm run test:interface
